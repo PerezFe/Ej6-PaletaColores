@@ -5,17 +5,18 @@ import ListaColores from "./ListaColores";
 
 
 const ColorInput = () => {
-    const [colordefault, setColordefault] = useState('blue', "")
+    const [colordefault, setColordefault] = useState('blue')
     const [arregloColor, setArregloColor] = useState([])
 
     const handleSubmit = (e)=>{
         e.preventDefault();
         setArregloColor([...arregloColor, colordefault])
         setColordefault("blue")
+        console.log(arregloColor)
     }
 
   return (
-    <Container >
+    <Container className="text-center">
       <div style={{height: 100 }} className="d-flex">
         
         <div
@@ -27,7 +28,7 @@ const ColorInput = () => {
           }}
         >
         </div>
-        <div className="mx-3">
+        <div className="mx-5">
         <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3 d-flex" controlId="formBasicEmail">
           <Form.Control 
