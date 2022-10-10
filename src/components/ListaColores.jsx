@@ -1,14 +1,19 @@
 import React from 'react';
-import {ListGroup} from "react-bootstrap";
+import {ListGroup, Row} from "react-bootstrap";
 import Color from './Color';
 
 
-const ListaColores = (propsArregloColor) => {
+const ListaColores = ({propsArregloColor, borrarColor}) => {
     return (
         <ListGroup horizontal>
-        <Color></Color>
-        <Color></Color>
-        <Color></Color>
+        <Row>
+            {
+                propsArregloColor.map((color, posicion)=><Color 
+                key={posicion} 
+                nombreColor={color} 
+                borrarColor={borrarColor}></Color>)
+            }
+        </Row>
         </ListGroup>
     );
 };

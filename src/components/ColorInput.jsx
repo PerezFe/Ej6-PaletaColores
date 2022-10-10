@@ -15,6 +15,12 @@ const ColorInput = () => {
         console.log(arregloColor)
     }
 
+    const borrarColor = (nombre)=>{
+      let arregloModificado = arregloColor.filter((item)=>(item !== nombre));
+      //actualizo el state
+      setArregloColor(arregloModificado)
+    }
+
   return (
     <Container className="text-center">
       <div style={{height: 100 }} className="d-flex">
@@ -30,15 +36,17 @@ const ColorInput = () => {
         </div>
         <div className="mx-5">
         <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3 d-flex" controlId="formBasicEmail">
+        <Form.Group className="mb-3 d-flex" controlId="formBasicColor">
           <Form.Control 
           type="text" 
-          placeholder="Ingrese un color ej: Blue"
+          placeholder="Ingrese un color ej: blue"
           onChange={(e)=> setColordefault(e.target.value)}
         //   onChange={(e)=> setTarea(e.target.value)}
           //enlace del input al state
           />
-        <Button variant="primary" type="submit" className="mx-3">
+        <Button variant="primary" 
+                type="submit" 
+                className="mx-3">
           Enviar
         </Button>
         </Form.Group>
@@ -46,7 +54,7 @@ const ColorInput = () => {
         </div>
       </div>
       <hr/>
-      <ListaColores propsArregloColor={arregloColor}></ListaColores>
+      <ListaColores propsArregloColor={arregloColor} borrarColor={borrarColor}></ListaColores>
     </Container>
   );
 };
