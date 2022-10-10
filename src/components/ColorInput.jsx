@@ -1,12 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { Form, Button } from "react-bootstrap";
 import ListaColores from "./ListaColores";
 
 
 const ColorInput = () => {
+  //busco en ls
+    const colorLocalStorage = JSON.parse(localStorage.getItem("arregloTareaKey")) || [];
+    
     const [colordefault, setColordefault] = useState('blue')
-    const [arregloColor, setArregloColor] = useState([])
+    const [arregloColor, setArregloColor] = useState(colorLocalStorage)
+
+    useEffect(()=>{
+      //guardar en ls
+      localStorage.setItem("arregloTareaKey", JSON.stringify(arregloColor));
+    },[arregloColor])
 
     const handleSubmit = (e)=>{
         e.preventDefault();
